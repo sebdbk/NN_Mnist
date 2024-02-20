@@ -1,0 +1,5 @@
+epoch_num;filter_num;ker1_size;ker2_size;dense_size;
+15;32;5;3;512
+15;64;5;3;512
+15;48;5;3;256
+15;48;5;3;512
