@@ -25,12 +25,12 @@ x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
 
 # Create a net model
 inputs = Input(shape=x_train.shape[1:])
-x = Conv2D(filters=32, kernel_size=(5, 5), activation='relu')(inputs)
+x = Conv2D(filters=64, kernel_size=(5, 5), activation='relu')(inputs)
 x = MaxPool2D(pool_size=(2, 2))(x)
-x = Conv2D(filters=32, kernel_size=(3, 3), activation='relu')(x)
+x = Conv2D(filters=64, kernel_size=(3, 3), activation='relu')(x)
 x = MaxPool2D(pool_size=(2, 2))(x)
 x = Flatten()(x)
-x = Dense(256, activation='relu')(x)
+x = Dense(512, activation='relu')(x)
 x = Dropout(rate=0.5)(x)
 outputs = Dense(10, activation='softmax')(x)
 net = Model(inputs=inputs, outputs=outputs)
@@ -41,7 +41,7 @@ net = Model(inputs=inputs, outputs=outputs)
 net.compile(loss='categorical_crossentropy', optimizer='adam')
 history = net.fit(x_train, y_train,
                   validation_data=(x_test, y_test),
-                  epochs=10,
+                  epochs=1,
                   batch_size=256)
 
 plt.figure()
@@ -52,7 +52,7 @@ plt.ylabel('loss')
 plt.legend()
 
 # Save
-net.save("network_for_mnist.h5")
+net.save("final_network.h5")
 
 # Load
 #from keras.models import load_model

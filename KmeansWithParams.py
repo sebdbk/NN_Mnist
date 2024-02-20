@@ -3,7 +3,7 @@ from keras.datasets import mnist
 from keras.utils import to_categorical
 from keras.models import Model, load_model
 from keras.layers import Conv2D, MaxPool2D, Dense, Flatten, Dropout, Input
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from sklearn.model_selection import KFold
 from keras.utils import plot_model
 import numpy as np
@@ -73,7 +73,7 @@ def test_network_kmeans(epoch_num, filter_num, ker1_size, ker2_size, dense_size)
         history = model.fit(inputs[train], targets[train],
                             batch_size=batch_size,
                             epochs=epoch_num,
-                            verbose=2)
+                            verbose=1)
 
         # Generate generalization metrics
         scores = model.evaluate(inputs[test], targets[test], verbose=0)
